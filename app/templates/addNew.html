@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+    form *{
+        display: block;
+
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div>
+            <h2>Arbortary</h2>
+            <p>A site to track randomly planted Tree</p>
+        </div>
+        <div>
+            <div>
+                <a href="/user/account">My Trees</a>
+                <h2 style="display:inline;">Welcome, {{user.first_name}}</h2>
+            </div>
+            <div style="text-align:center ;"><a href="/logged" style="display: inline; margin-right: 20px;"><button>Dashboard</button></a>
+                <a href="/logout" style="display:inline ;"><button>logout</button></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1>Arbitrarily Plant a Tree</h1>
+        {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+        <form action="/addProcess" method="post">
+            {%csrf_token%}
+            <label >Species</label>
+            <input type="text" name="species">
+            <label >Location</label>
+            <input type="text" name="location">
+            <label >Reason</label>
+            <input type="text" name="reason">
+            <label >Date Planted</label>
+            <input type="date" name="date">
+            <button>Planet</button>
+
+
+        </form>
+    </main>
+</body>
+</html>

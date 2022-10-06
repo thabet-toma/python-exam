@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        header {
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
 </head>
-
 <body>
-
     <header>
         <div>
             <h2>Arbortary</h2>
@@ -26,31 +23,26 @@
                 <a href="/user/account">My Trees</a>
                 <h2 style="display:inline;">Welcome, {{user.first_name}}</h2>
             </div>
-            <div style="text-align:center ;"><a href="/new/tree" style="display: inline; margin-right: 20px;"><button>planet a
-                        tree</button></a>
+            <div style="text-align:center ;"><a href="/logged" style="display: inline; margin-right: 20px;"><button>Dashboard</button></a>
                 <a href="/logout" style="display:inline ;"><button>logout</button></a>
             </div>
         </div>
     </header>
+    <h1>Manage My Trees</h1>
     <table border="1">
         <thead>
             <th style="width:100px;text-align: start;" >Species</th>
-            <th style="width:100px;text-align: start;">Planted by</th>
+            <th style="width:100px;text-align: start;">Date planted</th>
             <th>Actions</th>
         </thead>
         
-        {%for tree in allTrees%}
+        {%for tree in user.trees.all%}
         <tr>
             <td>{{tree.Species}}</td>
-            <td>{{tree.user.first_name}} {{tree.user.last_name}}</td>
-            <td><a href="/show/{{tree.id}}">details</a></td>
+            <td>{{tree.date_planted}}</td>
+            <td><a href="/delete/{{tree.id}}" style="display: inline ;">delete</a> <a href="/edit/{{tree.id}}" style="display: inline;">edit</a></td>
         </tr>
         {%endfor%}
     </table>
-
-
-
-
 </body>
-
 </html>

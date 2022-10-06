@@ -38,3 +38,24 @@ class Users(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=UserManager()
+class TreeManager(models.Manager):
+    def basic_validator(self,postData):
+        errors={}
+
+        if len(postData['species']) < 6:
+            errors["species"] = "species should be at least 5 characters"
+        if len(postData['location']) < 3:
+            errors["location"] = "location should be at least 2 characters"
+        if len(postData['reason']) >51 or len(postData['reason'])<1:
+            errors["reason"] = "location should be at the maximum 50 characters and not empty "
+        return errors
+class Trees(models.Model):
+    Species=models.CharField(max_length=255)
+    location=models.CharField(max_length=255)
+    reason=models.CharField(max_length=255)
+    date_planted=models.DateField()
+    user=models.ForeignKey(Users,related_name="trees", on_delete = models.CASCADE)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+    objects=TreeManager()
+

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +12,7 @@
         }
     </style>
 </head>
-
 <body>
-
     <header>
         <div>
             <h2>Arbortary</h2>
@@ -26,31 +23,14 @@
                 <a href="/user/account">My Trees</a>
                 <h2 style="display:inline;">Welcome, {{user.first_name}}</h2>
             </div>
-            <div style="text-align:center ;"><a href="/new/tree" style="display: inline; margin-right: 20px;"><button>planet a
-                        tree</button></a>
+            <div style="text-align:center ;"><a href="/logged" style="display: inline; margin-right: 20px;"><button>Dashboard</button></a>
                 <a href="/logout" style="display:inline ;"><button>logout</button></a>
             </div>
         </div>
     </header>
-    <table border="1">
-        <thead>
-            <th style="width:100px;text-align: start;" >Species</th>
-            <th style="width:100px;text-align: start;">Planted by</th>
-            <th>Actions</th>
-        </thead>
-        
-        {%for tree in allTrees%}
-        <tr>
-            <td>{{tree.Species}}</td>
-            <td>{{tree.user.first_name}} {{tree.user.last_name}}</td>
-            <td><a href="/show/{{tree.id}}">details</a></td>
-        </tr>
-        {%endfor%}
-    </table>
-
-
-
-
+    <h1>{{tree.Species}} planted by {{tree.user.first_name}}</h1>
+    <h2>Where:{{tree.location}}</h2>
+    <h2>When:{{tree.date_planted}}</h2>
+    <h2>Reason:{{tree.reason}}</h2>
 </body>
-
 </html>
