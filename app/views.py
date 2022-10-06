@@ -124,6 +124,18 @@ def delete(request,id):
     tree=Trees.objects.get(id=id)
     tree.delete()
     return redirect('/user/account')
+def visited(request,id):
+    
+    user=Users.objects.get(id=request.session['Uid'])
+    Trees.objects.get(id=id).visitors.add(user)
+    context={'tree':Trees.objects.get(id=id),
+    'user':user}
+    return render(request,'showTree.html',context)
+
+
+    
+    
+
     
 
 

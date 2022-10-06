@@ -36,6 +36,7 @@
         <thead>
             <th style="width:100px;text-align: start;" >Species</th>
             <th style="width:100px;text-align: start;">Planted by</th>
+            <th>visitors</th>
             <th>Actions</th>
         </thead>
         
@@ -43,6 +44,7 @@
         <tr>
             <td>{{tree.Species}}</td>
             <td>{{tree.user.first_name}} {{tree.user.last_name}}</td>
+            <td>{{tree.visitors.all.count}}</td>
             <td><a href="/show/{{tree.id}}">details</a></td>
         </tr>
         {%endfor%}

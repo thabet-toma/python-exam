@@ -58,4 +58,5 @@ class Trees(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=TreeManager()
+    visitors=models.ManyToManyField(Users,related_name='user_visitors',null=True)
 

@@ -16,5 +16,6 @@ urlpatterns = [
     path('editProcess',views.editProcess),
     path('show/<int:id>',views.showTree),
     path('delete/<int:id>',views.delete),
+    path('visited/<int:id>',views.visited),
     
 ]
